@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>转盘抽奖</title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			//定义变量
+			var tableWidth = 500;
+			var tableHeight = 500;
+			var lineNum = 12;
+			var turnWidth = 170;
+			var turnHeight = 170;
+
+			var bob = document.getElementsByTagName('body');
+			//			bob[0].style.background = 'gray';
+
+			//转盘	
+			var mainDiv = document.createElement('div');
+			mainDiv.style.width = tableWidth + 'px';
+			mainDiv.style.height = tableHeight + 'px';
+			mainDiv.style.border = '2px solid black';
+			mainDiv.style.borderRadius = "50%";
+			mainDiv.style.margin = 'auto';
+			mainDiv.style.position = 'relative';
+			mainDiv.style.background = 'url(img/abc.png)';
+			mainDiv.style.backgroundSize = '100% 100%';
+			bob[0].appendChild(mainDiv);
+
+			for(i = 0; i < lineNum; i++) {
+				var lineDiv = document.createElement('div');
+				lineDiv.style.width = '2px';
+				lineDiv.style.borderTop = tableWidth / 2 + 'px solid black';
+				lineDiv.style.borderBottom = tableWidth / 2 + 'px solid rgba(0,0,0,0)';
+				lineDiv.style.display = 'inline-block';
+				lineDiv.style.position = 'absolute';
+				lineDiv.style.top = '0';
+				lineDiv.style.left = tableWidth / 2 - 1 + 'px';
+				lineDiv.style.transform = 'rotate(' + i * 360 / lineNum + 'deg)';
+				mainDiv.appendChild(lineDiv);
+
+			}
+
+			var turnDiv = document.createElement('div');
+			turnDiv.style.width = turnWidth + 'px';
+			turnDiv.style.height = turnHeight + 'px';
+			turnDiv.style.border = '2px solid black';
+			turnDiv.style.borderRadius = '50%';
+			turnDiv.style.background = 'red';
+			turnDiv.style.position = 'absolute';
+			turnDiv.style.top = tableHeight / 2 - turnHeight / 2 + 'px';
+			turnDiv.style.left = tableWidth / 2 - turnWidth / 2 + 'px';
+			turnDiv.innerText = 'START';
+			turnDiv.style.fontSize = '2.5rem'
+			turnDiv.style.color = 'white';
+			turnDiv.style.textAlign = 'center';
+			turnDiv.style.lineHeight = turnHeight + 'px';
+			turnDiv.onclick = turnStart;
+
+			turnDiv.style.transform = 'rotate(' + 360 * 4 + 'deg)';
+			turnDiv.style.transition = '2s';
+
+			mainDiv.appendChild(turnDiv);
+
+			// 指针
+			var hander = document.createElement('div');
+			hander.style.display = 'inline-block';
+			hander.style.borderLeft = '50px solid rgba(2, 2, 2, 0)';
+			hander.style.borderRight = '50px solid rgba(2, 2, 2, 0)';
+			hander.style.borderBottom = '120px solid red';
+			hander.style.position = 'absolute';
+			hander.style.top = '-70px';
+			hander.style.left = '35px';
+			turnDiv.appendChild(hander);
+
+			function turnStart() {
+				num = Math.round(Math.random() * 72);
+				console.log(num);
+				mum = num * 5;
+				console.log(mum);
+
+
+				turnDiv.style.transform = 'rotate(' + mum + 'deg)';
+
+				test();
+
+			}
+
+			function turnClear() {
+
+				turnDiv.style.transform = 'rotate( 0deg)';
+
+			}
+
+			function test() {
+				setTimeout(function() {
+					if(num > 0 && num < 6) {
+						alert('恭喜您获得  iPhone6s一部');
+					} else if(num >= 6 && num < 12) {
+						alert('恭喜您获得  洗衣机一台');
+					} else if(num >= 24 && num < 30) {
+						alert('恭喜您获得  iPad一部');
+					} else if(num >= 48 && num < 54) {
+						alert('恭喜您获得  冰箱一台');
+					} else if(num >= 36 && num < 42) {
+						alert('谢谢参与');
+					} else if(num >= 60 && num < 66) {
+						alert('不要灰心');
+					} else {
+						alert('恭喜您获得  现金100元');
+					}
+					turnClear();
+				}, 2000);
+			}
+			//			function  aa() {
+			//			
+			//				if(num>0 && num<6){
+			//					setTimeout( function(){alert('恭喜您获得  iPhone6s一部')},1000);
+			//				}else if (num>=6 && num<12){
+			//					setTimeout(function(){alert('恭喜您获得  洗衣机一台')}, 1000);
+			//				}else if(num>=24 && num<30){
+			//					setTimeout(function(){alert('恭喜您获得  iPad一部')}, 1000);	
+			//				}else if(num>=48 && num<54){
+			//					setTimeout(function(){alert('恭喜您获得  冰箱一台')},1000);	
+			//				}else if (num>=36 && num<42){
+			//					setTimeout(function(){alert('谢谢参与')},1000);		
+			//				}else if(num>=60 && num<66){
+			//					setTimeout(function(){alert('不要灰心')},1000);	
+			//				}else {
+			//					setTimeout(function(){alert('恭喜您获得  现金100元')}, 1000);	
+			//				}
+			//			}
+		</script>
+	</body>
+
+</html>

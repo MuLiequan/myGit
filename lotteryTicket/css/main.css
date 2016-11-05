@@ -1,0 +1,36 @@
+html {
+	font-size: 62.5%;
+}
+
+*{
+	margin: 0px;
+	padding: 0px;
+	font-size: 1.6rem;
+}
+
+
+#wrap {
+	width: 600px;
+	/*height: 500px;*/
+	margin: 20px auto;
+	border: 1px solid black;
+}
+
+#top {
+	width: 100%;
+	text-align: center;
+}
+
+#top>button {
+	width: 100px;
+	height: 50px;
+	margin: 20px;
+}
+
+#box {
+	width: 90%;
+	/*height: 200px;*/
+	margin: 20px auto;
+	border: 1px solid gray;
+}
+

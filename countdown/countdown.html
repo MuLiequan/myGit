@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var futureTime = new Date(2016, 11, 31, 23, 59, 59);
+			var getFTime_ms = futureTime.getTime();
+			
+			
+			function timer() {
+			var nowTime = new Date();
+			
+			var gteYear = nowTime.getFullYear();
+			var getMonth = nowTime.getMonth();
+			var getDay = nowTime.getDate();
+			var getHours = nowTime.getHours();
+			var getMinutes = nowTime.getMinutes();
+			var getSeconds= nowTime.getSeconds();
+		
+			var getSeconds_ms = nowTime.getTime();
+			var syTime_ms = getFTime_ms - getSeconds_ms;
+			
+//			var syYear = tyTime_ms;
+//			var syMonth = '';
+			var syDay = Math.floor(syTime_ms/1000/60/60/24);
+			var syhours = Math.floor(syTime_ms/1000/60/60%24);
+			var syminutes = Math.floor(syTime_ms/1000/60%60);
+			var sySeconds = Math.floor(syTime_ms/1000%60);
+			var syMiniSeconds = Math.floor(syTime_ms%1000);
+			
+			
+			document.getElementsByTagName('body')[0].innerText = '';
+			document.write(syDay +'天'+syhours+'小时'+ syminutes+'分钟'+sySeconds+'秒'+syMiniSeconds+'毫秒');
+			console.log(syDay);
+			console.log(syhours);
+			console.log(syminutes);
+			console.log(sySeconds);
+			
+		}
+			
+			timer();
+			setInterval('timer()',1);
+		</script>
+	</body>
+</html>
